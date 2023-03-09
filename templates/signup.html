@@ -1,0 +1,76 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
+
+<!-- Custom styles for this template -->
+
+<link href="/static/css/login.css" rel="stylesheet"> {% endblock head %}
+
+{% block title %} SignUp {% endblock title %}
+
+{% block body %}
+
+<div class="manual">
+
+    <main class="form-signin">
+        <form method="post" action="/signup">
+            {% csrf_token %}
+            <h1 class="h3 mb-3 fw-normal"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please SignUp</h1>
+
+            <div class="form-floating">
+                <input type="text" name="first_name" class="form-control" id="floatingInput"
+                    placeholder="firstname">
+                <label for="floatingInput">Enter First Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" name="last_name" class="form-control" id="floatingInput"
+                    placeholder="lastname">
+                <label for="floatingInput">Enter Last Name</label>
+            <div class="form-floating">
+                <input type="text" name="username" class="form-control" id="floatingInput"
+                    placeholder="username">
+                <label for="floatingInput">Enter Username</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" name="email" class="form-control" id="floatingInput"
+                    placeholder="email">
+                <label for="floatingInput">Enter E-mail</label>
+            </div>
+            
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingPassword"
+                    placeholder="password">
+                <label for="floatingPassword">Enter Password</label>
+            </div>
+            
+            <button class="w-100 btn btn-lg btn-primary" type="submit">SignUp</button>
+        </form>
+        <a href="/login">Already have an account? Click here for Login</a>
+    </main>
+</div>
+
+<div>
+    {% for message in messages %}
+       <h5>{{message}}</h5> 
+    {% endfor %}
+</div>
+
+{% endblock body %}
